@@ -1,23 +1,36 @@
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import List from './components/List';
+import withListLoading from './components/withListLoading';
 
 function App() {
+  const ListLoading = withListLoading(List);
+  const [appState, setAppState] = useState({
+    loading: false,
+    result: null,
+  });
+
+  useEffect(() => {
+    setAppState({ loading: true });
+    const apiUrl = `https://pokeapi.co/api/v2/pokemon?limit=100&offset=200`;
+    fetch(apiUrl)
+      .then((res) => res.json())
+      .then((result) => {
+        console.log('useEffect? ', result);
+        setAppState({ loading: false, result: result });
+      });
+  }, [setAppState]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hopefull thius changes showersz piasdf
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <div className='banner-top'>
+        <h1>Pokemans</h1>
+      </div>
+      <div className='repo-container'>
+        <ListLoading isLoading={appState.loading} result={appState.result} />
+      </div>
+
     </div>
   );
 }
