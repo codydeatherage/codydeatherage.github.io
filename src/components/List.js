@@ -1,18 +1,23 @@
-import React from 'react';
+import React, {Component} from 'react';
+import ResultCard from './ResultCard';
+
+async function getPokeImg (name){
+  const apiUrl = `https://pokeapi.co/api/v2/pokemon/${name}`;
+  fetch(apiUrl)
+    .then((res) => res.json())
+    .then((result) => {
+      console.log(result.sprites.front_default);
+      return result.sprites.front_default.toString();
+    });
+}
+
+
 const List = (props) => {
   const { result } = props;
   if (!result || result.length === 0) return <p>No repos, sorry</p>;
   return (
-    <div>
-        {result.results.map((pokemon) => {
-            return(
-            <li key={pokemon.name} className='list'>
-                <span className='repo-text'>{pokemon.name} </span>
-            </li>
-             );
-        })}
-    </div>
+    <ResultCard result={result} ></ResultCard>
   );
-};
+}; 
 
 export default List;

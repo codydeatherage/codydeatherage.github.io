@@ -1,35 +1,41 @@
 import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
+
 import List from './components/List';
-import withListLoading from './components/withListLoading';
+import WithLoading from './components/withListLoading';
 
+import ResultCard from './components/ResultCard';
+
+const ListWithLoading = WithLoading(List);
 function App() {
-  const ListLoading = withListLoading(List);
-  const [appState, setAppState] = useState({
-    loading: false,
+   const [appState, setAppState] = useState({
     result: null,
+    isLoading: false
   });
-
+  const ids = [];
   useEffect(() => {
-    setAppState({ loading: true });
-    const apiUrl = `https://pokeapi.co/api/v2/pokemon?limit=100&offset=200`;
+    setAppState({isLoading: true});
+    const apiUrl = `https://pokeapi.co/api/v2/pokemon?limit=50&offset=0`;
+    console.log(apiUrl);
     fetch(apiUrl)
       .then((res) => res.json())
       .then((result) => {
-        console.log('useEffect? ', result);
-        setAppState({ loading: false, result: result });
+        console.log('API RESULT', result.results);
+        setAppState({isLoading: false, result: result});
       });
-  }, [setAppState]);
-
+  }, [setAppState]); 
+ 
+   
+  
   return (
     <div className='App'>
       <div className='banner-top'>
-        <h1>Pokemans</h1>
+        Pokemans
       </div>
-      <div className='repo-container'>
-        <ListLoading isLoading={appState.loading} result={appState.result} />
-      </div>
+     
+        <ListWithLoading isLoading={appState.isLoading} result={appState.result} />
+         {/*  </ResultCard> */}
+     
 
     </div>
   );
