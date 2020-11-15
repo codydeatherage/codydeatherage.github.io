@@ -1,46 +1,49 @@
 import React,{Component} from 'react';
 
 class ResultCard extends Component{
+    constructor(props){
+        super(props);
+        this.pokeNames = [];
+        this.numResults = props.numResults;
+        for(let res of props.result.results){
+            this.pokeNames.push(res.name);
+        }
+
+        this.state = {
+            data : this.pokeNames
+        }
+    }
 
     componentDidMount(){
-        console.log(this.props.result.results);
-        const apiUrl = `https://pokeapi.co/api/v2/pokemon/${this.props.result.results.name}`;
-        fetch(apiUrl)
-        .then((res) => res.json())
-        .then((result) => {
-            console.log(result.id);
-        })
+        const pokeInfo = [];
+         for(let i = 0; i < this.numResults; i++){
+            let apiUrl = `https://pokeapi.co/api/v2/pokemon/${this.pokeNames[i]}`;
+            fetch(apiUrl)
+            .then((res) => res.json())
+            .then( (result) => {
+                pokeInfo.push(result);
+                if(i === this.numResults -1){
+                    this.setState({data: pokeInfo});
+                }
+            });
+        } 
     }
-    getPokeID = (url) =>{
-        const apiUrl = url;
-        fetch(apiUrl)
-        .then((res) => res.json())
-        .then((result) => {
-            console.log(result);
-            return result.id
-        })
-    }
-
   render(){
-    const { result } = this.props;
     return (
-        <div className="card-container">
-        {result.results.map((pokemon) => {
-            {console.log('POKE', pokemon)}
-            return(
-                
-              <div key={pokemon.name} className='card '>
-    
-                   <img className='card-img' src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png' alt=""></img> 
-                   <h1 className='card-name'>{pokemon.name} </h1> 
-              {/*   <h1 className='card-name'>{this.getPokeID(pokemon.url)}</h1> */}
-
-              </div>
-             );
-        })}
-    </div>
+        <div className="card-container">   
+        {
+            this.state.data.map((data, index) => {
+                return(  
+                <div key={index} className='card '>
+                    <img className='card-img' src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`} alt=""></img> 
+                    <h1 className='card-name'>{data.name} </h1> 
+                </div>
+                );
+            })
+        }     
+        </div>
     );
     }
-};
+}
 
 export default ResultCard;

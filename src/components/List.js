@@ -16,7 +16,7 @@ const List = (props) => {
   const { result } = props;
   if (!result || result.length === 0) return <p>No repos, sorry</p>;
   return (
-    <ResultCard result={result} ></ResultCard>
+    <ResultCard result={result}  numResults={props.numResults}></ResultCard>
   );
 }; 
 
