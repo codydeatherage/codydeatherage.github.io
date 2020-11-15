@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 
 class ResultCard extends Component{
+
     componentDidMount(){
         console.log(this.props.result.results);
         const apiUrl = `https://pokeapi.co/api/v2/pokemon/${this.props.result.results.name}`;

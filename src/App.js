@@ -8,20 +8,27 @@ import ResultCard from './components/ResultCard';
 
 const ListWithLoading = WithLoading(List);
 function App() {
-   const [appState, setAppState] = useState({
+  const [appState, setAppState] = useState({
     result: null,
-    isLoading: false
+    isLoading: false,
+    names : [],
+    numResults : 50
   });
-  const ids = [];
+
+  const names = [];
   useEffect(() => {
     setAppState({isLoading: true});
-    const apiUrl = `https://pokeapi.co/api/v2/pokemon?limit=50&offset=0`;
+    const apiUrl = `https://pokeapi.co/api/v2/pokemon?limit=893&offset=0`;
     console.log(apiUrl);
     fetch(apiUrl)
       .then((res) => res.json())
       .then((result) => {
-        console.log('API RESULT', result.results);
-        setAppState({isLoading: false, result: result});
+        console.log('API RESULT', result.results.name);
+        for(let res of result.results){
+          names.push(res.name);
+        }
+        setAppState({isLoading: false, result: result, names: names});
+        console.log(names);
       });
   }, [setAppState]); 
  
@@ -33,7 +40,11 @@ function App() {
         Pokemans
       </div>
      
-        <ListWithLoading isLoading={appState.isLoading} result={appState.result} />
+        <ListWithLoading
+          isLoading={appState.isLoading}
+          result={appState.result}
+          numResults={appState.numResults}   
+        />
          {/*  </ResultCard> */}
      
 
