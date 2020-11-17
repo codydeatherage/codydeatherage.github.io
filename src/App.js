@@ -1,14 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import List from './components/List';
+import Button from 'react-bootstrap/Button';
+import Collapse from '@kunukn/react-collapse';
 import WithLoading from './components/withListLoading';
+import Filter from './components/Filter';
 
 const ListWithLoading = WithLoading(List);
 function App() {
   const [appState, setAppState] = useState({
     result: null,
     isLoading: false,
-    numResults : 50
+    numResults : 250,
+  });
+
+  const [collState, setCollState] = useState({
+    open: false
   });
 
   const names = [];
@@ -22,7 +29,7 @@ function App() {
           for(let res of result.results){
             names.push(res.name);
           }
-          setAppState({isLoading: false, result: result, numResults:50});
+          setAppState({isLoading: false, result: result, numResults:25});
         });
     }
     fetchData();
@@ -34,15 +41,37 @@ function App() {
       <div className='banner-top'>
         Pokemans
       </div>
+      
         <div className="search-section">
           <i className="fa fa-search"></i>
           <input className="search-bar" type="search"></input>
         </div>
-        <ListWithLoading
+        <div className="filter-container">
+
+          <Button id="filter-btn"
+            onClick={() => setCollState({open: !collState.open})}
+            aria-controls="example-collapse-text"
+            aria-expanded={collState.open}
+          > Filter
+          <i class="fa fa-caret-down" id="caret-left"></i> 
+          <i class="fa fa-caret-down" id="caret-right"></i>
+          </Button>
+
+          <Collapse isOpen={collState.open} className="collapse-css-transition">
+            <div className='card filter-card' id="example-collapse-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+              veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+              commodo consequat     
+            </div>
+          </Collapse>
+        </div>
+      {/*   <Filter/> */}
+{        <ListWithLoading
           isLoading={appState.isLoading}
           result={appState.result}
           numResults={appState.numResults}   
-        />
+        />}
     </div>
   );
 }

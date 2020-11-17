@@ -10,7 +10,6 @@
   --card-bg2-color: white;
 }
 
-
 .App {
   text-align: center;
 }
@@ -34,6 +33,7 @@
 .card-container{
   background-color: rgb(125, 125, 175);
   width: 75%;
+  top: 5px;
   padding: 0.4rem;
   left: 100px;
   position: relative;
@@ -96,13 +96,6 @@
   text-transform: capitalize;
 }
 
-
-.bg-second{
-  height: 50%;
-  width: 50%;
-  background-color: blue;
-}
-
 .fa{
   padding-right: 5px;
 }
@@ -123,13 +116,62 @@
   height: 50px;
   width: 50px;
 }
-.type-grass{
-  background-color: var(--grass);
+
+/* 
+#filter-panel{
+  top: 5px;
+  left: 10.5%;
+  position: relative;
+  width: 75%;
+  align-content: center;
+  background-color: yellow;
+} */
+
+.dropdown-toggle{
+  display: block;
+  line-height: 15px;
 }
 
-/* .type-fire{
-  background-position: 100px;
-  background: rgb(240,128,48);
-  background: linear-gradient(0deg, var(--fire) 0%, rgba(255,255,255,100) 100%);
+.collapse-css-transition {
+  transition: height 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
 
-} */
+#filter-btn{
+  position: relative;
+  background-color: rgb(54, 43, 45);
+  left: 0;
+  height: 25px;
+  width: 100%;
+  line-height: 50%;
+}
+
+.filter-card{
+  width: 100%;
+  height: 300px;
+  top: 2px;
+  padding-bottom: 5px;
+
+}
+
+.filter-container{
+  position: relative;
+  width: 75%;
+  left: 100px;
+  justify-content: space-between;
+}
+
+.fa-caret-down{
+  font-size: 30px;
+  bottom: -4px;
+}
+
+#caret-left{
+  position: absolute;
+  left: 10%;
+}
+
+#caret-right{
+  position: absolute;
+  right: 10%;
+}
