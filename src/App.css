@@ -1,10 +1,13 @@
 :root {
+  /* colors from https://bulbapedia.bulbagarden.net/wiki/Category:Type_color_templates*/
   --bug :#A8B820; --dark: #705848; --dragon: #7038f8;
   --electric: #f8d030; --fairy: #ee99ac; --fighting: #c03028;
   --fire: #f08030; --flying: #A890f0; --ghost: #705898;
   --grass: #78c850; --ground: #e0c068; --ice: #98d8d8;
   --normal: #a8a878; --poison: #a040a0; --psychic: #f85888;
   --rock: #B8a038; --steel: #b8b8d0; --water: #6890f0;
+  --card-bg-color: gray;
+  --card-bg2-color: white;
 }
 
 
@@ -42,6 +45,8 @@
 .card{
   position: relative;
   text-align: center;
+  background-color: var(--card-bg-color);
+  background: linear-gradient(0deg, var(--card-bg-color) 0%, var(--card-bg2-color) 100%);
   height: 200px;
 /*   background-color: var(--grass); */
 /*   width: 200px; */
@@ -78,6 +83,13 @@
 
 }
 
+
+.bg-second{
+  height: 50%;
+  width: 50%;
+  background-color: blue;
+}
+
 .fa{
   padding-right: 5px;
 }
@@ -91,6 +103,9 @@
   background-color: var(--grass);
 }
 
-.type-fire{
-  background-color: var(--fire);
-}
+/* .type-fire{
+  background-position: 100px;
+  background: rgb(240,128,48);
+  background: linear-gradient(0deg, var(--fire) 0%, rgba(255,255,255,100) 100%);
+
+} */

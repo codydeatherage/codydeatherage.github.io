@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-
+import ReactDOM from 'react-dom';
 class ResultCard extends Component{
     constructor(props){
         super(props);
@@ -37,7 +37,7 @@ class ResultCard extends Component{
                     this.setState({data: pokeInfo, readyForData: true});
                 }
             });
-        } 
+        }
     }
 
   render(){
@@ -46,22 +46,30 @@ class ResultCard extends Component{
         {
             this.state.data.map((data, index) => {
                 if(this.state.readyForData){
-                    console.log(data.types.length);
                     if(data.types.length === 1){
+                        let cssProps = {'--card-bg-color': data.types[0].type.name};
+                        let color = this.typeColor[`${data.types[0].type.name}`];
+                        console.log(color, data.types[0].type.name);
+                        cssProps['--card-bg-color'] = color;
                         return(
-                            <div key={index} className={`card types-1 type-${data.types[0].type.name}`}>
+                            <div key={index} style={cssProps} className={`card types-1 type-${data.types[0].type.name}`} id="result">
                                 <img className='card-img' src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`} alt=""></img> 
                                 <h1 className='card-name'>{data.name} </h1> 
                             </div> 
                         )
                     }
+
                     else if(data.types.length === 2){
+                        let cssProps = {'--card-bg-color': data.types[0].type.name,
+                                        '--card-bg2-color': data.types[1].type.name};
+                        let color = this.typeColor[`${data.types[0].type.name}`];
+                        let color2 = this.typeColor[`${data.types[1].type.name}`];
+                        cssProps['--card-bg-color'] = color;
+                        cssProps['--card-bg2-color'] = color2;
                         return(
-                            <div key={index} className={`card types-2`}>
-                                <div className="bg-first"></div>
-                                <div className="bg-second"></div>
+                            <div key={index} style={cssProps} className='card'>
                                 <img className='card-img' src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`} alt=""></img> 
-                                <h1 className='card-name'>{data.name} </h1> 
+                                <h1 className='card-name'>{'getmera'} </h1> 
                             </div>
                         );
                     }
@@ -69,7 +77,8 @@ class ResultCard extends Component{
                 }
                 else{
                     return(
-                        <h1>GETINA DATA</h1>)
+                        <h1>GETINA DATA</h1>
+                        )
                 }
             })
         }     
