@@ -57,20 +57,21 @@
 }
 
 .search-section{
-  left: 20%;
+  left: 100px;
   position: relative;
   background-color: green;
-  padding-top: 20px;
-  width: 50%;
-  height: 100px;
-  align-content: center;
+  padding-top: 10px;
+  width: 75%;
+  height: 50px;
+  border-radius: 25px 25px 25px 25px;
 
 }
 
 .fa{
   padding-right: 5px;
 }
+
 .search-bar{
-  top: 50px;
-  width: 50%;
+  left: 50%;
+  width: 80%;
 }
