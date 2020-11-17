@@ -46,7 +46,7 @@
   position: relative;
   text-align: center;
   background-color: var(--card-bg-color);
-  background: linear-gradient(0deg, var(--card-bg-color) 0%, var(--card-bg2-color) 100%);
+  background: linear-gradient(45deg, var(--card-bg-color) 15%, var(--card-bg2-color) 75%);
   height: 200px;
 /*   background-color: var(--grass); */
 /*   width: 200px; */
@@ -81,6 +81,19 @@
   height: 50px;
   border-radius: 25px 25px 25px 25px;
 
+}
+
+.id-label{
+  height: 20px;
+  width: 50%;
+  left: 25%;
+  position: absolute;
+  background-color: rgba(243, 25, 25, 0);
+ /* font-family: 'Courier New', Courier, monospace; */
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif  ;
+  font-weight: 1000;
+  color: rgb(34, 23, 23);
+  text-transform: capitalize;
 }
 
 

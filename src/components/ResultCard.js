@@ -45,16 +45,27 @@ class ResultCard extends Component{
         <div className="card-container">   
         {
             this.state.data.map((data, index) => {
+                let child= 0;
                 if(this.state.readyForData){
                     if(data.types.length === 1){
                         let cssProps = {'--card-bg-color': data.types[0].type.name};
                         let color = this.typeColor[`${data.types[0].type.name}`];
                         console.log(color, data.types[0].type.name);
                         cssProps['--card-bg-color'] = color;
+                        let idString = '';
+                        idString = data.id.toString();
+                        console.log(idString.length);
+                        switch(idString.length){
+                            case 1 : idString = `00` + idString.toString(); break;
+                            case 2: idString = `0` + idString.toString(); break;
+                        }
+                        console.log(idString.length, data.name);
                         return(
                             <div key={index} style={cssProps} className={`card types-1 type-${data.types[0].type.name}`} id="result">
+                                <div className='id-label'>{`No. ${idString}`}</div>
                                 <img className='card-img' src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`} alt=""></img> 
-                                <h1 className='card-name'>{data.name} </h1> 
+                                <h1 className='card-name'>{data.name} </h1>
+                                {/* <div className='type-info'>{data.types[0].type.name}</div> */}
                             </div> 
                         )
                     }
@@ -66,10 +77,18 @@ class ResultCard extends Component{
                         let color2 = this.typeColor[`${data.types[1].type.name}`];
                         cssProps['--card-bg-color'] = color;
                         cssProps['--card-bg2-color'] = color2;
+                        let idString = '';
+                        idString = data.id.toString();
+                        console.log(idString.length);
+                        switch(idString.length){
+                            case 1 : idString = `00` + idString.toString(); break;
+                            case 2: idString = `0` + idString.toString(); break;
+                        }
                         return(
                             <div key={index} style={cssProps} className='card'>
+                                <div className='id-label'>{`No. ${idString}`}</div>
                                 <img className='card-img' src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`} alt=""></img> 
-                                <h1 className='card-name'>{'getmera'} </h1> 
+                                <h1 className='card-name'>{data.name} </h1> 
                             </div>
                         );
                     }
