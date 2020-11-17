@@ -96,7 +96,11 @@ class ResultCard extends Component{
                 }
                 else{
                     return(
-                        <h1>GETINA DATA</h1>
+                        <div class="spinner-container">
+                            <div class="spinner-border" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
                         )
                 }
             })

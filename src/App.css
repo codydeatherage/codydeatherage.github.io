@@ -112,6 +112,17 @@
   width: 80%;
 }
 
+.spinner-container{
+  height: 200px;
+  width: minmax(200px, auto);
+  background-color: rgb(246, 234, 215);
+  line-height: 200px;
+}
+
+.spinner-border{
+  height: 50px;
+  width: 50px;
+}
 .type-grass{
   background-color: var(--grass);
 }
