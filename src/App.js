@@ -47,7 +47,6 @@ function App() {
           <input className="search-bar" type="search"></input>
         </div>
         <div className="filter-container">
-
           <Button id="filter-btn"
             onClick={() => setCollState({open: !collState.open})}
             aria-controls="example-collapse-text"
@@ -56,17 +55,12 @@ function App() {
           <i class="fa fa-caret-down" id="caret-left"></i> 
           <i class="fa fa-caret-down" id="caret-right"></i>
           </Button>
-
           <Collapse isOpen={collState.open} className="collapse-css-transition">
             <div className='card filter-card' id="example-collapse-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-              veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-              commodo consequat     
+              <Filter></Filter>  
             </div>
           </Collapse>
-        </div>
-      {/*   <Filter/> */}
+        </div> 
 {        <ListWithLoading
           isLoading={appState.isLoading}
           result={appState.result}

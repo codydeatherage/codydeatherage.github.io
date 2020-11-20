@@ -117,16 +117,6 @@
   width: 50px;
 }
 
-/* 
-#filter-panel{
-  top: 5px;
-  left: 10.5%;
-  position: relative;
-  width: 75%;
-  align-content: center;
-  background-color: yellow;
-} */
-
 .dropdown-toggle{
   display: block;
   line-height: 15px;
@@ -148,7 +138,7 @@
 
 .filter-card{
   width: 100%;
-  height: 300px;
+  height: 150px;
   top: 2px;
   padding-bottom: 5px;
 
@@ -158,8 +148,8 @@
   position: relative;
   width: 75%;
   left: 100px;
-  justify-content: space-between;
 }
+
 
 .fa-caret-down{
   font-size: 30px;
