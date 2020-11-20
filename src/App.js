@@ -39,9 +39,11 @@ function App() {
   return (
     <div className='App'>
       <div className='banner-top'>
-        Pokemans
+        Pokedex Under Construction :)
       </div>
-      
+      <div>
+        current task: finish filter section
+      </div>
         <div className="search-section">
           <i className="fa fa-search"></i>
           <input className="search-bar" type="search"></input>
