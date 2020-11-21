@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+
 import './App.css';
 import List from './components/List';
 import Button from 'react-bootstrap/Button';
@@ -10,8 +11,7 @@ const ListWithLoading = WithLoading(List);
 function App() {
   const [appState, setAppState] = useState({
     result: null,
-    isLoading: false,
-    numResults : 250,
+    isLoading: false
   });
 
   const [collState, setCollState] = useState({
@@ -29,7 +29,7 @@ function App() {
           for(let res of result.results){
             names.push(res.name);
           }
-          setAppState({isLoading: false, result: result, numResults:25});
+          setAppState({isLoading: false, result: result});
         });
     }
     fetchData();
@@ -39,6 +39,7 @@ function App() {
   return (
     <div className='App'>
       <div className='banner-top'>
+        <div className='inside-banner'></div>
         Pokedex Under Construction :)
       </div>
       <div>
@@ -66,7 +67,7 @@ function App() {
 {        <ListWithLoading
           isLoading={appState.isLoading}
           result={appState.result}
-          numResults={appState.numResults}   
+          /* numResults={appState.numResults}  */  
         />}
     </div>
   );
