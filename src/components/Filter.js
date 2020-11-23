@@ -22,17 +22,17 @@ class Filter extends Component{
         event.preventDefault();
         this.props.dispatch({
             type: 'CHANGE_NUM_RESULTS',
-            payload: {numResults : event.target.value}
+            payload: event.target.value
         })
     }
 
     render(){
         return(
             <div>
-                <form className="needs-validation" novalidate>
+                <form className="needs-validation" noValidate>
                     <div className="form-row">
                         <div className="col-md-4 mb-3">
-                            <select  class="custom-select custom-select-lg mb-3" id="first-type-select">
+                            <select  className="custom-select custom-select-lg mb-3" id="first-type-select">
                                 <option value="" disabled selected hidden>First Type</option>
                                 <option value="bug">Bug</option>
                                 <option value="dragon">Dragon</option>
@@ -53,7 +53,7 @@ class Filter extends Component{
                             </select>
                         </div>
                         <div className="col-md-4 mb-3">
-                            <select class="custom-select custom-select-lg mb-3" id="second-type-select">
+                            <select className="custom-select custom-select-lg mb-3" id="second-type-select">
                                 <option value="" disabled selected hidden>Second Type</option>
                                 <option value="bug">Bug</option>
                                 <option value="dark">Dark</option>
@@ -75,7 +75,7 @@ class Filter extends Component{
                             </select>
                         </div>
                         <div className="col-md-4 mb-3">
-                            <select onChange={this.handleSubmit} class="custom-select custom-select-lg mb-3">
+                            <select onChange={this.handleSubmit} className="custom-select custom-select-lg mb-3">
                                 <option value="" disabled selected hidden># Results</option>
                                 <option value="25">25</option>
                                 <option value="50">50</option>
