@@ -51,14 +51,39 @@ const DogMatch = () => {
           (favorites?.length ?
             <>
               <Paper sx={{ m: 'auto', p: 4, textAlign: 'center' }}>
-                <Typography variant='h4' sx={{ mb: 1 }}>{'You have been matched with:'}</Typography>
-                <Typography variant='h3' >{matchedInfo[0].name}</Typography>
-                <Stack direction={'row'} sx={{ gap: 2, justifyContent: 'space-between' }}>
-                  <InfoLabel label={'Breed'} value={matchedInfo[0].breed} />
-                  <InfoLabel label={'Age'} value={matchedInfo[0].age.toString()} />
-                  <InfoLabel label={'Zip Code'} value={matchedInfo[0].zip_code.toString()} />
+                <Stack>
+                  <Typography variant='h4' sx={{ mb: 1 }}>{'You have been matched with:'}</Typography>
+                  <Typography variant='h3' >{matchedInfo[0].name}</Typography>
+                  <Stack direction={'row'} sx={{ gap: 2, justifyContent: 'space-between' }}>
+                    <InfoLabel label={'Breed'} value={matchedInfo[0].breed} />
+                    <InfoLabel label={'Age'} value={matchedInfo[0].age.toString()} />
+                    <InfoLabel label={'Zip Code'} value={matchedInfo[0].zip_code.toString()} />
+                  </Stack>
+                  <img
+                    style={{
+                      maxHeight: 300,
+                      maxWidth: 300,
+                      margin: 'auto'
+                    }}
+                    src={matchedInfo[0].img}
+                    alt=""
+                  />
+                  <Button
+                    onClick={handleBackClick}
+                    sx={{ width: '60%', m: 'auto', mt: 1 }}
+                    variant='contained'
+                  >
+                    {'Back to Search'}
+                  </Button>
                 </Stack>
-                <img src={matchedInfo[0].img} alt="" />
+              </Paper>
+            </>
+            :
+            <>
+              <Box sx={{ m: 'auto', p: 4, textAlign: 'center' }}>
+                <Typography variant='h3' sx={{ mb: 2, color: 'white' }}>
+                  {"You haven't selected any favorites yet"}
+                </Typography>
                 <Button
                   onClick={handleBackClick}
                   sx={{ width: '60%' }}
@@ -66,20 +91,7 @@ const DogMatch = () => {
                 >
                   {'Back to Search'}
                 </Button>
-              </Paper>
-            </>
-            :
-            <>
-              <Typography variant='h3' sx={{ mb: 2, color: 'white' }}>
-                {"You haven't selected any favorites yet"}
-              </Typography>
-              <Button
-                onClick={handleBackClick}
-                sx={{ width: '60%' }}
-                variant='contained'
-              >
-                {'Back to Search'}
-              </Button>
+              </Box>
             </>
           )
         }
