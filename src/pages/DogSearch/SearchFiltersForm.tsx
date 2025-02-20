@@ -69,15 +69,16 @@ const SearchFiltersForm = ({ onSubmit }: SearchFiltersFormProps) => {
               disablePortal
               multiple
               options={breedOptions}
-              renderInput={(params) => <TextField
-                {...params}
-                label={"Breed(s)"}
-                slotProps={{
-                  inputLabel: {
-                    sx: { fontSize: 18 }
-                  }
-                }}
-              />
+              renderInput={(params) =>
+                <TextField
+                  {...params}
+                  label={"Breed(s)"}
+                  slotProps={{
+                    inputLabel: {
+                      sx: { fontSize: 18 }
+                    }
+                  }}
+                />
               }
               {...field}
               onChange={(_, selectedOptions) => {
